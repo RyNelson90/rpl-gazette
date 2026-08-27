@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="FPL Scoring Cheat Sheet">
+<meta property="og:description" content="How every point gets made and lost. From the Reference Desk of The Gameweek Gazette.">
+<meta property="og:image" content="https://rynelson90.github.io/rpl-gazette/preview.png">
+<meta property="og:url" content="https://rynelson90.github.io/rpl-gazette/scoring.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reno Premier League">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>FPL Scoring Cheat Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5efe1;
+    --card: #fbf7ec;
+    --ink: #191407;
+    --muted: #6f6450;
+    --line: #cfc4aa;
+    --red: #9e2b25;
+    --gold: #8a6c1f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  .sheet { max-width: 700px; margin: 0 auto; padding: 26px 18px 46px; }
+  .double-rule { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); height: 4px; }
+  .crest-sm { display: block; margin: 16px auto 0; width: 58px; height: 58px; }
+  .masthead-sm {
+    font-family: 'Grenze Gotisch', 'UnifrakturCook', 'Old English Text MT', Georgia, serif;
+    font-weight: 700;
+    text-align: center;
+    font-size: clamp(26px, 7vw, 38px);
+    line-height: 1.05;
+    margin: 6px 0 2px;
+  }
+  .tagline {
+    text-align: center;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 12px;
+  }
+  .kicker {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin: 22px 0 8px;
+    font-weight: 700;
+  }
+  .headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: clamp(26px, 7vw, 40px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    margin: 0 0 10px;
+  }
+  .deck {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    text-align: center;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: #3d3628;
+    max-width: 520px;
+    margin: 0 auto 8px;
+  }
+  .sec {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 32px 0 14px;
+  }
+  .sec::before, .sec::after { content: ""; flex: 1; border-top: 1px solid var(--ink); }
+  .sec span {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--red);
+    white-space: nowrap;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 2px solid var(--ink);
+    padding: 5px 6px;
+    font-weight: 700;
+    text-align: center;
+  }
+  th.act, td.act { text-align: left; padding-left: 2px; }
+  td {
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  tr:last-child td { border-bottom: none; }
+  td.act { font-weight: 700; font-size: 13.5px; }
+  .pos { font-weight: 700; }
+  .neg { color: var(--red); font-weight: 700; }
+  .na { color: #a89e86; }
+  .note {
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card {
+    border: 1px solid var(--ink);
+    background: var(--card);
+    padding: 13px 14px;
+  }
+  .card .t {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .card .v {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 19px;
+    margin-bottom: 4px;
+  }
+  .card .d { font-size: 13px; line-height: 1.5; color: #3d3628; }
+  .backlink { text-align: center; font-size: 13.5px; margin-top: 32px; }
+  a { color: var(--red); }
+  .colophon {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-top: 22px;
+    border-top: 1px solid var(--ink);
+    padding-top: 12px;
+  }
+  @media (max-width: 560px) {
+    .cards { grid-template-columns: 1fr; }
+    td, th { padding-left: 4px; padding-right: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="double-rule"></div>
+  <img class="crest-sm" src="apple-touch-icon.png" alt="Reno Premier League crest">
+  <h1 class="masthead-sm">The Gameweek Gazette</h1>
+  <div class="double-rule"></div>
+
+  <div class="kicker">Quick Matchday Reference</div>
+  <h2 class="headline">FPL Scoring<br>Cheat Sheet</h2>
+
+  <div class="sec"><span>How Players Score</span></div>
+  <table>
+    <thead>
+      <tr><th class="act">Action</th><th>GK</th><th>DEF</th><th>MID</th><th>FWD</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="act">Played under 60 min</td><td>+1</td><td>+1</td><td>+1</td><td>+1</td></tr>
+      <tr><td class="act">Played 60+ min</td><td>+2</td><td>+2</td><td>+2</td><td>+2</td></tr>
+      <tr><td class="act">Goal</td><td class="pos">+10</td><td class="pos">+6</td><td class="pos">+5</td><td class="pos">+4</td></tr>
+      <tr><td class="act">Assist</td><td>+3</td><td>+3</td><td>+3</td><td>+3</td></tr>
+      <tr><td class="act">Clean sheet</td><td class="pos">+4</td><td class="pos">+4</td><td>+1</td><td class="na">0</td></tr>
+      <tr><td class="act">Every 3 saves</td><td>+1</td><td class="na">·</td><td class="na">·</td><td class="na">·</td></tr>
+      <tr><td class="act">Penalty save</td><td class="pos">+5</td><td class="na">·</td><td class="na">·</td><td class="na">·</td></tr>
+      <tr><td class="act">Defensive contributions</td><td class="na">·</td><td>10 = +2</td><td>12 = +2</td><td>12 = +2</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Defensive contributions are clearances, blocks, interceptions, and tackles. Midfielders and forwards also count ball recoveries.</p>
+
+  <div class="sec"><span>Bonus Points</span></div>
+  <p class="deck" style="margin-bottom: 4px;">The best three players in every match earn extra.</p>
+  <table>
+    <thead>
+      <tr><th class="act">Match rank</th><th>1st</th><th>2nd</th><th>3rd</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="act">Bonus</td><td class="pos">+3</td><td class="pos">+2</td><td class="pos">+1</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><span>How Points Are Lost</span></div>
+  <table>
+    <thead>
+      <tr><th class="act">Offense</th><th>Points</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="act">Yellow card</td><td class="neg">-1</td></tr>
+      <tr><td class="act">Red card</td><td class="neg">-3</td></tr>
+      <tr><td class="act">Own goal</td><td class="neg">-2</td></tr>
+      <tr><td class="act">Penalty miss</td><td class="neg">-2</td></tr>
+      <tr><td class="act">GK/DEF: every 2 goals conceded</td><td class="neg">-1</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec"><span>Multipliers and Extras</span></div>
+  <div class="cards">
+    <div class="card">
+      <div class="t">Captain</div>
+      <div class="v">2x points</div>
+      <div class="d">Your captain's score doubles. The vice steps in if the captain doesn't play.</div>
+    </div>
+    <div class="card">
+      <div class="t">Triple Captain</div>
+      <div class="v">3x points</div>
+      <div class="d">One chip, one week, triple the armband. Ask John how it's going.</div>
+    </div>
+    <div class="card">
+      <div class="t">The Bench</div>
+      <div class="v">Scores nothing</div>
+      <div class="d">Bench points only count the week you play Bench Boost. Otherwise they just hurt.</div>
+    </div>
+    <div class="card">
+      <div class="t">Extra Transfers</div>
+      <div class="v">-4 each</div>
+      <div class="d">Moves beyond your free transfers cost 4 points apiece, off the top of your score.</div>
+    </div>
+  </div>
+
+  <div class="sec"><span>Chip Windows, 2026/27</span></div>
+  <table>
+    <thead>
+      <tr><th class="act">Chip</th><th>First half</th><th>Second half</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="act">Wildcard</td><td>GW2 to GW19</td><td>GW20 to GW38</td></tr>
+      <tr><td class="act">Free Hit</td><td>GW2 to GW19</td><td>GW20 to GW38</td></tr>
+      <tr><td class="act">Bench Boost</td><td>GW1 to GW19</td><td>GW20 to GW38</td></tr>
+      <tr><td class="act">Triple Captain</td><td>GW1 to GW19</td><td>GW20 to GW38</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Eight chips per manager, one of each per half. First-half chips vanish if unused after GW19. The Gazette's Chip Ledger tracks who has played what.</p>
+
+  <p class="backlink"><a href="https://rynelson90.github.io/rpl-gazette/">Back to the current issue</a></p>
+
+  <p class="colophon">Reference Desk of The Gameweek Gazette · Values per the official FPL rulebook<br>Tell the editor if the Premier League moves the goalposts</p>
+
+</div>
+</body>
+</html>
