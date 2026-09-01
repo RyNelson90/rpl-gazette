@@ -292,6 +292,14 @@
     .chipgrid th.cg-name { width: 70px; }
     .chipgrid td.cg-name { font-size: 11px; }
   }
+
+  .mv { font-size: 10px; margin-left: 3px; }
+  .mv-up { color: #2f6b2f; }
+  .mv-down { color: var(--red); }
+  .mv-same { color: var(--muted); }
+  .race-wrap { border: 1px solid var(--line); background: var(--card); padding: 10px 8px 4px; }
+  .race-wrap svg { display: block; width: 100%; height: auto; }
+  .cg-x { color: #b5ab93; font-size: 11px; }
 </style>
 </head>
 <body>
@@ -303,67 +311,72 @@
   <h1 class="masthead">The Gameweek Gazette</h1>
   <p class="tagline">Officially the Unofficial Newspaper of the Reno Premier League</p>
   <div class="dateline">
-    <span>Vol. 1, No. 1</span>
+    <span>Vol. 1, No. 2</span>
     <span>Reno, Nevada</span>
-    <span>Tuesday, August 25, 2026</span>
-    <span>Gameweek 1</span>
+    <span>Tuesday, September 1, 2026</span>
+    <span>Gameweek 2</span>
   </div>
 
   <!-- HEADLINE -->
   <div class="kicker">12 Managers · $456 Purse · 38 Gameweeks</div>
-  <h2 class="headline">Cap Drops 83<br>On the League</h2>
-  <p class="deck">Afternoon De Ligt takes the opener by 20. Nobody else cracked 65, and the league's favorite captain paid out 4.</p>
+  <h2 class="headline">Chris Cracks<br>The Century!</h2>
+  <p class="deck">A record 103 points hands Chris the tenner, the league's first century, and a spot just 13 behind Cap.</p>
   <div class="stats">
-    <div class="stat"><div class="num">83</div><div class="lbl">Top Score</div></div>
-    <div class="stat"><div class="num">50.2</div><div class="lbl">League Average</div></div>
-    <div class="stat money"><div class="num">$10</div><div class="lbl">Banked by Cap</div></div>
+    <div class="stat"><div class="num">103</div><div class="lbl">New league record score</div></div>
+    <div class="stat"><div class="num">46</div><div class="lbl">The Bruno armband's payout</div></div>
+    <div class="stat money"><div class="num">$10</div><div class="lbl">Banked by Chris</div></div>
   </div>
 
   <!-- MONEY TABLE -->
   <div class="sec"><span>The Money Table</span></div>
   <table class="money">
     <thead>
-      <tr><th class="pos">#</th><th>Manager</th><th class="num-cell">GW1</th><th class="won">Won</th></tr>
+      <tr><th class="pos">#</th><th>Manager</th><th class="num-cell">GW2</th><th class="num-cell">Total</th><th class="won">Won</th></tr>
     </thead>
     <tbody>
-      <tr class="winner"><td class="pos">1</td><td class="mgr">Cap<span class="team">Afternoon De Ligt</span></td><td class="num-cell">83</td><td class="won">$10</td></tr>
-      <tr><td class="pos">2</td><td class="mgr">Ryan<span class="team">Alchemy FC</span></td><td class="num-cell">63</td><td class="won">$0</td></tr>
-      <tr><td class="pos">3</td><td class="mgr">Chris<span class="team">Lintonio FC</span></td><td class="num-cell">58</td><td class="won">$0</td></tr>
-      <tr><td class="pos">4</td><td class="mgr">Chad<span class="team">ChadlyEPL</span></td><td class="num-cell">56</td><td class="won">$0</td></tr>
-      <tr><td class="pos">5</td><td class="mgr">Sarah<span class="team">sraitter</span></td><td class="num-cell">54</td><td class="won">$0</td></tr>
-      <tr><td class="pos">6</td><td class="mgr">Tyler<span class="team">Tyler's Team</span></td><td class="num-cell">48</td><td class="won">$0</td></tr>
-      <tr><td class="pos">7</td><td class="mgr">Diana<span class="team">la tricolor</span></td><td class="num-cell">46</td><td class="won">$0</td></tr>
-      <tr><td class="pos">8</td><td class="mgr">Brett<span class="team">Nelly Brett</span></td><td class="num-cell">45</td><td class="won">$0</td></tr>
-      <tr><td class="pos">9</td><td class="mgr">John<span class="team">FC 775</span></td><td class="num-cell">42</td><td class="won">$0</td></tr>
-      <tr><td class="pos">10</td><td class="mgr">Katie<span class="team">KatWalk</span></td><td class="num-cell">38</td><td class="won">$0</td></tr>
-      <tr><td class="pos">10</td><td class="mgr">Jesus<span class="team">Jesus's Team</span></td><td class="num-cell">38</td><td class="won">$0</td></tr>
-      <tr><td class="pos">12</td><td class="mgr">Anthony<span class="team">team big cat</span></td><td class="num-cell">31</td><td class="won">$0</td></tr>
+      <tr class="winner"><td class="pos">1<span class="mv mv-same">·</span></td><td class="mgr">Cap<span class="team">Afternoon De Ligt</span></td><td class="num-cell">91</td><td class="num-cell">174</td><td class="won">$10</td></tr>
+      <tr><td class="pos">2<span class="mv mv-up">▲1</span></td><td class="mgr">Chris<span class="team">Lintonio FC</span></td><td class="num-cell">103</td><td class="num-cell">161</td><td class="won">$10</td></tr>
+      <tr><td class="pos">3<span class="mv mv-down">▼1</span></td><td class="mgr">Ryan<span class="team">Alchemy FC</span></td><td class="num-cell">97</td><td class="num-cell">160</td><td class="won">$0</td></tr>
+      <tr><td class="pos">4<span class="mv mv-up">▲4</span></td><td class="mgr">Brett<span class="team">BallsDeep in the Box</span></td><td class="num-cell">94</td><td class="num-cell">139</td><td class="won">$0</td></tr>
+      <tr><td class="pos">5<span class="mv mv-up">▲2</span></td><td class="mgr">Diana<span class="team">la tricolor</span></td><td class="num-cell">89</td><td class="num-cell">135</td><td class="won">$0</td></tr>
+      <tr><td class="pos">6<span class="mv mv-down">▼2</span></td><td class="mgr">Chad<span class="team">ChadlyEPL</span></td><td class="num-cell">77</td><td class="num-cell">133</td><td class="won">$0</td></tr>
+      <tr><td class="pos">7<span class="mv mv-down">▼2</span></td><td class="mgr">Sarah<span class="team">sraitter</span></td><td class="num-cell">77</td><td class="num-cell">131</td><td class="won">$0</td></tr>
+      <tr><td class="pos">8<span class="mv mv-down">▼2</span></td><td class="mgr">Tyler<span class="team">Tyler's Team</span></td><td class="num-cell">79</td><td class="num-cell">127</td><td class="won">$0</td></tr>
+      <tr><td class="pos">9<span class="mv mv-same">·</span></td><td class="mgr">John<span class="team">FC 775</span></td><td class="num-cell">91</td><td class="num-cell">125</td><td class="won">$0</td></tr>
+      <tr><td class="pos">10<span class="mv mv-same">·</span></td><td class="mgr">Katie<span class="team">KatWalk</span></td><td class="num-cell">69</td><td class="num-cell">107</td><td class="won">$0</td></tr>
+      <tr><td class="pos">11<span class="mv mv-up">▲1</span></td><td class="mgr">Anthony<span class="team">team big cat</span></td><td class="num-cell">74</td><td class="num-cell">105</td><td class="won">$0</td></tr>
+      <tr><td class="pos">12<span class="mv mv-down">▼2</span></td><td class="mgr">Jesus<span class="team">Jesus's Team</span></td><td class="num-cell">65</td><td class="num-cell">103</td><td class="won">$0</td></tr>
     </tbody>
   </table>
   <p class="note">Every manager put in $38, so the purse is $456. The weekly winner banks $10 each week, $380 in all (ties split it), and the champion collects the final $76. All winnings are paid out in one settlement after the final gameweek in May.</p>
+
+  <!-- TITLE RACE -->
+  <div class="sec"><span>The Title Race</span></div>
+  <div class="race-wrap"><svg viewBox="0 0 660 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cumulative points by gameweek for all twelve managers"><line x1="36" y1="14.0" x2="544" y2="14.0" stroke="#e0d8c4" stroke-width="1"/><text x="31" y="17.0" font-size="9" fill="#6f6450" text-anchor="end" font-family="Georgia,serif">181</text><line x1="36" y1="106.7" x2="544" y2="106.7" stroke="#e0d8c4" stroke-width="1"/><text x="31" y="109.7" font-size="9" fill="#6f6450" text-anchor="end" font-family="Georgia,serif">129</text><line x1="36" y1="199.3" x2="544" y2="199.3" stroke="#e0d8c4" stroke-width="1"/><text x="31" y="202.3" font-size="9" fill="#6f6450" text-anchor="end" font-family="Georgia,serif">76</text><line x1="36" y1="292.0" x2="544" y2="292.0" stroke="#e0d8c4" stroke-width="1"/><text x="31" y="295.0" font-size="9" fill="#6f6450" text-anchor="end" font-family="Georgia,serif">24</text><text x="36.0" y="310" font-size="9" fill="#6f6450" text-anchor="middle" font-family="Georgia,serif">GW1</text><text x="544.0" y="310" font-size="9" fill="#6f6450" text-anchor="middle" font-family="Georgia,serif">GW2</text><polyline points="36.0,187.5 544.0,26.6" fill="none" stroke="#9e2b25" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,231.6 544.0,49.6" fill="none" stroke="#8a6c1f" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,222.8 544.0,51.4" fill="none" stroke="#1f3a5f" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,254.6 544.0,88.5" fill="none" stroke="#c3b89b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,252.9 544.0,95.6" fill="none" stroke="#c3b89b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,235.2 544.0,99.1" fill="none" stroke="#c3b89b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,259.9 544.0,99.1" fill="none" stroke="#c3b89b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,238.7 544.0,102.6" fill="none" stroke="#c3b89b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,249.3 544.0,109.7" fill="none" stroke="#c3b89b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,267.0 544.0,145.0" fill="none" stroke="#c3b89b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,279.4 544.0,148.6" fill="none" stroke="#c3b89b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/><polyline points="36.0,267.0 544.0,152.1" fill="none" stroke="#c3b89b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/><text x="552" y="29.6" font-size="10.5" fill="#9e2b25" font-weight="bold" font-family="Georgia,serif">Cap 174</text><text x="552" y="52.6" font-size="10.5" fill="#8a6c1f" font-weight="bold" font-family="Georgia,serif">Chris 161</text><text x="552" y="65.1" font-size="10.5" fill="#1f3a5f" font-weight="bold" font-family="Georgia,serif">Ryan 160</text><text x="552" y="91.5" font-size="9" fill="#6f6450" font-family="Georgia,serif">Brett 139</text><text x="552" y="104.0" font-size="9" fill="#6f6450" font-family="Georgia,serif">Diana 135</text><text x="552" y="116.5" font-size="9" fill="#6f6450" font-family="Georgia,serif">Chad 133</text><text x="552" y="129.0" font-size="9" fill="#6f6450" font-family="Georgia,serif">John 133</text><text x="552" y="141.5" font-size="9" fill="#6f6450" font-family="Georgia,serif">Sarah 131</text><text x="552" y="154.0" font-size="9" fill="#6f6450" font-family="Georgia,serif">Tyler 127</text><text x="552" y="166.5" font-size="9" fill="#6f6450" font-family="Georgia,serif">Katie 107</text><text x="552" y="179.0" font-size="9" fill="#6f6450" font-family="Georgia,serif">Anthony 105</text><text x="552" y="191.5" font-size="9" fill="#6f6450" font-family="Georgia,serif">Jesus 103</text></svg></div>
+  <p class="note">Cumulative points through Gameweek 2. Top three in color, the pack in gray.</p>
 
   <!-- HONOURS -->
   <div class="sec"><span>Gazette Honours</span></div>
   <div class="honours">
     <div class="card">
       <div class="aw-top"><span class="aw-title">Manager of the Week</span><span class="aw-icon">👑</span></div>
-      <div class="aw-name">Cap</div>
-      <div class="aw-d">Afternoon De Ligt, 83 points. Banks the season's first $10 and a 20-point statement.</div>
-    </div>
-    <div class="card">
-      <div class="aw-top"><span class="aw-title">Captain Masterclass</span><span class="aw-icon">🎯</span></div>
-      <div class="aw-name">João Pedro (C), 22</div>
-      <div class="aw-d">Cap again. The armband returned 22 while the Haaland herd collected 4 apiece.</div>
+      <div class="aw-name">Chris</div>
+      <div class="aw-d">The league's first century! 103 points smashes Cap's old record of 83 and banks $10.</div>
     </div>
     <div class="card">
       <div class="aw-top"><span class="aw-title">Chip Catastrophe</span><span class="aw-icon">💥</span></div>
-      <div class="aw-name">John</div>
-      <div class="aw-d">Triple Captain on Thiago, who scored zero. Three times zero is a bold way to spend a chip.</div>
+      <div class="aw-name">Sarah</div>
+      <div class="aw-d">Triple Captain on João Pedro paid out 27. Not a flop, not a fortune, and the chip's gone forever!</div>
+    </div>
+    <div class="card">
+      <div class="aw-top"><span class="aw-title">Bench Pain</span><span class="aw-icon">🪑</span></div>
+      <div class="aw-name">Brett</div>
+      <div class="aw-d">Left a league-high 24 points on the pine and still climbed four spots to 4th. Imagine a clean bench!</div>
     </div>
     <div class="card">
       <div class="aw-top"><span class="aw-title">The Wooden Spoon</span><span class="aw-icon">🥄</span></div>
-      <div class="aw-name">Anthony</div>
-      <div class="aw-d">team big cat, 31 points. Lowest score of the week takes the Spoon.</div>
+      <div class="aw-name">Jesus</div>
+      <div class="aw-d">Lowest score of the week. 65 points, and captain Thiago chipped in just 4 of them. Chin up, it's early!</div>
     </div>
   </div>
 
@@ -375,17 +388,17 @@
     </thead>
     <tbody>
       <tr><td class="cg-name">Cap</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
-      <tr><td class="cg-name">Ryan</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used">1</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Chris</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
-      <tr><td class="cg-name">Chad</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
-      <tr><td class="cg-name">Sarah</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
-      <tr><td class="cg-name">Tyler</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
-      <tr><td class="cg-name">Diana</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
+      <tr><td class="cg-name">Ryan</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used">1</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Brett</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
+      <tr><td class="cg-name">Diana</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
+      <tr><td class="cg-name">Chad</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
+      <tr><td class="cg-name">Sarah</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used">2</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
+      <tr><td class="cg-name">Tyler</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">John</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used">1</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Katie</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
-      <tr><td class="cg-name">Jesus</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Anthony</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
+      <tr><td class="cg-name">Jesus</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
     </tbody>
   </table>
   <p class="legend">Eight chips per manager. ¹ chips expire after GW19, ² chips unlock at GW20.<br>○ still in hand · red number = the gameweek it was played.</p>
@@ -394,35 +407,35 @@
   <div class="sec"><span>The Weekly Whistle</span></div>
   <div class="story">
     <div class="whistle-sub">The Gazette blows the whistle on one storyline each week.</div>
-    <h3>The armband was the whole gameweek</h3>
-    <p>Four managers strapped the captain's armband on Haaland. Chad, Diana, Brett, and Anthony collected 4 points each for their loyalty.</p>
-    <p>John and Jesus went with Thiago, who scored nothing. John had also played his Triple Captain, turning zero into zero three times over.</p>
-    <p>Then there's Cap, who handed the armband to João Pedro and collected 22. That one call beat the herd by 18 points in a week he won by 20. The armband was the margin!</p>
+    <h3>The Armband Ran the Week</h3>
+    <p>Five managers strapped the band on Haaland and got a quiet 13, doubled to 26. Cap, Brett, Diana, Chad and Anthony all grazed with the herd. Safe pick, same ceiling.</p>
+    <p>Chris and Ryan zigged to Bruno instead and cashed 46 apiece, the best armband in the league. No coincidence they posted the week's top two scores. Even Sarah's Triple Captain couldn't keep up. Her 27 from João Pedro trailed a plain old double on Bruno by 19.</p>
+    <p>And then there's Jesus. He handed Thiago the armband and got 4 points back. The same Thiago who blanked John's Triple Captain in week one. Two gameweeks, two victims. Check your captain's pulse before kickoff!</p>
   </div>
 
   <!-- RECORDS -->
   <div class="sec"><span>The Record Book</span></div>
   <div class="records">
-    <div class="rec"><div class="k">Highest GW</div><div class="v">83</div><div class="h">Cap · GW1</div></div>
+    <div class="rec"><div class="k">Highest GW</div><div class="v">103</div><div class="h">Chris · GW2</div></div>
     <div class="rec"><div class="k">Lowest GW</div><div class="v">31</div><div class="h">Anthony · GW1</div></div>
     <div class="rec"><div class="k">Biggest Margin</div><div class="v">20</div><div class="h">Cap · GW1</div></div>
-    <div class="rec"><div class="k">Weekly Wins</div><div class="v">1</div><div class="h">Cap</div></div>
+    <div class="rec"><div class="k">Weekly Wins</div><div class="v">1</div><div class="h">Cap and Chris</div></div>
   </div>
   <p class="note">Records stand until broken. New categories open as the season ages: streaks, comebacks, most money won.</p>
 
   <!-- TEASER -->
   <div class="teaser">
-    <b>IN NO. 2</b><br>
-    The Title Race chart debuts. A line needs two dots.<br>
-    Wildcards and Free Hits are now legal. The Spoon defends.<br>
-    GW2 deadline: Friday, August 28, 10:30 AM PT. Set your lineups!
+    <b>IN NO. 3</b><br>
+    Cap still wears the crown, 13 clear at the top.<br>
+    One single point splits Chris and Ryan for second. GW3 could flip the podium!<br>
+    GW3 deadline: Friday, September 4, 10:30 AM PT. Set your lineups!
   </div>
 
   <!-- ARCHIVE -->
-  <p class="archive"><b>THE GAZETTE ARCHIVE</b><br>Vol. 1: No. 1 (you are holding it). Back issues available from the editor's desk.<br>On permanent file: <a href="https://rynelson90.github.io/rpl-gazette/scoring.html">the FPL Scoring Cheat Sheet</a>.</p>
+  <p class="archive"><b>THE GAZETTE ARCHIVE</b><br>Vol. 1: <a href="https://rynelson90.github.io/rpl-gazette/issue-01.html">No. 1 · GW1</a> · No. 2 (you are holding it). Back issues available from the editor's desk.<br>On permanent file: <a href="https://rynelson90.github.io/rpl-gazette/scoring.html">the FPL Scoring Cheat Sheet</a>.</p>
 
   <!-- COLOPHON -->
-  <p class="colophon">Published by the Gazette Desk · Figures from the official FPL API, pulled August 25, 2026<br>Vol. 1 covers the 2026/27 season · Complaints may be addressed to the current Wooden Spoon holder</p>
+  <p class="colophon">Published by the Gazette Desk · Figures from the official FPL API, pulled September 1, 2026<br>Vol. 1 covers the 2026/27 season · Complaints may be addressed to the current Wooden Spoon holder</p>
 
 </div>
 </body>
