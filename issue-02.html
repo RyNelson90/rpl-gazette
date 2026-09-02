@@ -319,6 +319,38 @@
   .race-tip td.g { color: var(--muted); font-size: 10px; }
   .race-tip tr.active td { font-weight: 700; color: var(--red); }
   .cg-x { color: #b5ab93; font-size: 11px; }
+  /* Interactive bits: shared tooltip, sortable money table, honours roll */
+  .has-tip { cursor: help; border-bottom: 1px dotted var(--line); }
+  .rec.has-tip { cursor: help; border-bottom: 1px solid var(--ink); }
+  .cg-used.has-tip { border-bottom: 0; cursor: help; }
+  .money .mgr .has-tip { border-bottom: 0; }
+  .money .mgr .has-tip:hover, .money .won .has-tip:hover { color: var(--red); }
+  .tip {
+    position: fixed; z-index: 50; pointer-events: none; max-width: 300px;
+    padding: 6px 9px 5px; background: var(--card); border: 1px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink); font-family: Georgia, serif; font-size: 11.5px;
+    line-height: 1.45; color: var(--ink); text-align: left;
+  }
+  .tip[hidden] { display: none; }
+  .tip .tt-h { font-weight: 700; letter-spacing: 1px; font-size: 10px; border-bottom: 1px solid var(--ink); margin-bottom: 3px; padding-bottom: 2px; }
+  .tip table { border-collapse: collapse; }
+  .tip td { padding: 0 5px 0 0; white-space: nowrap; }
+  .tip td.r { text-align: right; padding-left: 8px; }
+  .tip td.g { color: var(--muted); font-size: 10px; }
+  .money th.sortable { cursor: pointer; user-select: none; white-space: nowrap; }
+  .money th.sortable:hover { color: var(--red); }
+  .money th.sortable::after { content: ""; display: inline-block; width: 0; margin-left: 4px; }
+  .money th.sorted-asc::after { content: "▲"; width: auto; font-size: 8px; }
+  .money th.sorted-desc::after { content: "▼"; width: auto; font-size: 8px; }
+  .roll-toggle { text-align: center; font-size: 12px; margin: 10px 0 0; }
+  .roll-link { color: var(--red); letter-spacing: 1.5px; text-transform: uppercase; font-size: 10.5px; font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--red); }
+  .roll { border: 1px solid var(--line); background: var(--card); margin-top: 8px; padding: 6px 12px; font-size: 12.5px; }
+  .roll[hidden] { display: none; }
+  .roll-row { display: flex; gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--line); line-height: 1.5; }
+  .roll-row:last-child { border-bottom: 0; }
+  .roll-gw { flex: 0 0 38px; font-weight: 700; color: var(--muted); font-size: 10.5px; letter-spacing: 1px; padding-top: 2px; }
+  .roll-items { flex: 1; }
+  .rl-t { color: var(--muted); font-size: 10.5px; }
 </style>
 </head>
 <body>
@@ -350,21 +382,21 @@
   <div class="sec"><span>The Money Table</span></div>
   <table class="money">
     <thead>
-      <tr><th class="pos">#</th><th>Manager</th><th class="num-cell">GW2</th><th class="num-cell">Total</th><th class="won">Won</th></tr>
+      <tr><th class="pos sortable" data-key="rank">#</th><th class="sortable" data-key="name">Manager</th><th class="num-cell sortable" data-key="gw">GW2</th><th class="num-cell sortable" data-key="total">Total</th><th class="won sortable" data-key="won">Won</th></tr>
     </thead>
     <tbody>
-      <tr class="winner"><td class="pos">1<span class="mv mv-same">·</span></td><td class="mgr">Cap<span class="team">Afternoon De Ligt</span></td><td class="num-cell">91</td><td class="num-cell">174</td><td class="won">$10</td></tr>
-      <tr><td class="pos">2<span class="mv mv-up">▲1</span></td><td class="mgr">Chris<span class="team">Lintonio FC</span></td><td class="num-cell">103</td><td class="num-cell">161</td><td class="won">$10</td></tr>
-      <tr><td class="pos">3<span class="mv mv-down">▼1</span></td><td class="mgr">Ryan<span class="team">Alchemy FC</span></td><td class="num-cell">97</td><td class="num-cell">160</td><td class="won">$0</td></tr>
-      <tr><td class="pos">4<span class="mv mv-up">▲4</span></td><td class="mgr">Brett<span class="team">BallsDeep in the Box</span></td><td class="num-cell">94</td><td class="num-cell">139</td><td class="won">$0</td></tr>
-      <tr><td class="pos">5<span class="mv mv-up">▲2</span></td><td class="mgr">Diana<span class="team">la tricolor</span></td><td class="num-cell">89</td><td class="num-cell">135</td><td class="won">$0</td></tr>
-      <tr><td class="pos">6<span class="mv mv-down">▼2</span></td><td class="mgr">Chad<span class="team">ChadlyEPL</span></td><td class="num-cell">77</td><td class="num-cell">133</td><td class="won">$0</td></tr>
-      <tr><td class="pos">7<span class="mv mv-down">▼2</span></td><td class="mgr">Sarah<span class="team">sraitter</span></td><td class="num-cell">77</td><td class="num-cell">131</td><td class="won">$0</td></tr>
-      <tr><td class="pos">8<span class="mv mv-down">▼2</span></td><td class="mgr">Tyler<span class="team">Tyler's Team</span></td><td class="num-cell">79</td><td class="num-cell">127</td><td class="won">$0</td></tr>
-      <tr><td class="pos">9<span class="mv mv-same">·</span></td><td class="mgr">John<span class="team">FC 775</span></td><td class="num-cell">91</td><td class="num-cell">125</td><td class="won">$0</td></tr>
-      <tr><td class="pos">10<span class="mv mv-same">·</span></td><td class="mgr">Katie<span class="team">KatWalk</span></td><td class="num-cell">69</td><td class="num-cell">107</td><td class="won">$0</td></tr>
-      <tr><td class="pos">11<span class="mv mv-up">▲1</span></td><td class="mgr">Anthony<span class="team">team big cat</span></td><td class="num-cell">74</td><td class="num-cell">105</td><td class="won">$0</td></tr>
-      <tr><td class="pos">12<span class="mv mv-down">▼2</span></td><td class="mgr">Jesus<span class="team">Jesus's Team</span></td><td class="num-cell">65</td><td class="num-cell">103</td><td class="won">$0</td></tr>
+      <tr class="winner" data-rank="1" data-name="Cap" data-gw="91" data-total="174" data-won="10.00"><td class="pos">1<span class="mv mv-same">·</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;Haaland&lt;/b&gt; for 26 pts&lt;br&gt;Vice: Cherki&lt;br&gt;Bench left: 16 pts · Hits: 0">Cap</span><span class="team">Afternoon De Ligt</span></td><td class="num-cell">91</td><td class="num-cell">174</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;WEEKS WON · CAP&lt;/div&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;GW1&lt;/td&gt;&lt;td class=r&gt;83 pts&lt;/td&gt;&lt;td class=r&gt;$10&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;">$10</span></td></tr>
+      <tr data-rank="2" data-name="Chris" data-gw="103" data-total="161" data-won="10.00"><td class="pos">2<span class="mv mv-up">▲1</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;B.Fernandes&lt;/b&gt; for 46 pts&lt;br&gt;Vice: Saka&lt;br&gt;Bench left: 10 pts · Hits: 0">Chris</span><span class="team">Lintonio FC</span></td><td class="num-cell">103</td><td class="num-cell">161</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;WEEKS WON · CHRIS&lt;/div&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;GW2&lt;/td&gt;&lt;td class=r&gt;103 pts&lt;/td&gt;&lt;td class=r&gt;$10&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;">$10</span></td></tr>
+      <tr data-rank="3" data-name="Ryan" data-gw="97" data-total="160" data-won="0.00"><td class="pos">3<span class="mv mv-down">▼1</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;B.Fernandes&lt;/b&gt; for 46 pts&lt;br&gt;Vice: Gabriel&lt;br&gt;Bench left: 20 pts · Hits: 0">Ryan</span><span class="team">Alchemy FC</span></td><td class="num-cell">97</td><td class="num-cell">160</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;RYAN&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
+      <tr data-rank="4" data-name="Brett" data-gw="94" data-total="139" data-won="0.00"><td class="pos">4<span class="mv mv-up">▲4</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;Haaland&lt;/b&gt; for 26 pts&lt;br&gt;Vice: B.Fernandes&lt;br&gt;Bench left: 24 pts · Hits: 0">Brett</span><span class="team">BallsDeep in the Box</span></td><td class="num-cell">94</td><td class="num-cell">139</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;BRETT&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
+      <tr data-rank="5" data-name="Diana" data-gw="89" data-total="135" data-won="0.00"><td class="pos">5<span class="mv mv-up">▲2</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;Haaland&lt;/b&gt; for 26 pts&lt;br&gt;Vice: Verbruggen&lt;br&gt;Bench left: 1 pts · Hits: 0">Diana</span><span class="team">la tricolor</span></td><td class="num-cell">89</td><td class="num-cell">135</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;DIANA&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
+      <tr data-rank="6" data-name="Chad" data-gw="77" data-total="133" data-won="0.00"><td class="pos">6<span class="mv mv-down">▼2</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;Haaland&lt;/b&gt; for 26 pts&lt;br&gt;Vice: Lammens&lt;br&gt;Bench left: 9 pts · Hits: 0">Chad</span><span class="team">ChadlyEPL</span></td><td class="num-cell">77</td><td class="num-cell">133</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;CHAD&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
+      <tr data-rank="7" data-name="Sarah" data-gw="77" data-total="131" data-won="0.00"><td class="pos">7<span class="mv mv-down">▼2</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;João Pedro&lt;/b&gt; for 27 pts&lt;br&gt;Vice: Rice&lt;br&gt;Bench left: 7 pts · Hits: 0">Sarah</span><span class="team">sraitter</span></td><td class="num-cell">77</td><td class="num-cell">131</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;SARAH&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
+      <tr data-rank="8" data-name="Tyler" data-gw="79" data-total="127" data-won="0.00"><td class="pos">8<span class="mv mv-down">▼2</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;Isak&lt;/b&gt; for 16 pts&lt;br&gt;Vice: Kelleher&lt;br&gt;Bench left: 0 pts · Hits: 0">Tyler</span><span class="team">Tyler's Team</span></td><td class="num-cell">79</td><td class="num-cell">127</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;TYLER&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
+      <tr data-rank="9" data-name="John" data-gw="91" data-total="125" data-won="0.00"><td class="pos">9<span class="mv mv-same">·</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;João Pedro&lt;/b&gt; for 18 pts&lt;br&gt;Vice: Pickford&lt;br&gt;Bench left: 0 pts · Hits: 8">John</span><span class="team">FC 775</span></td><td class="num-cell">91</td><td class="num-cell">125</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;JOHN&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
+      <tr data-rank="10" data-name="Katie" data-gw="69" data-total="107" data-won="0.00"><td class="pos">10<span class="mv mv-same">·</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;Isak&lt;/b&gt; for 16 pts&lt;br&gt;Vice: Pope&lt;br&gt;Bench left: 13 pts · Hits: 0">Katie</span><span class="team">KatWalk</span></td><td class="num-cell">69</td><td class="num-cell">107</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;KATIE&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
+      <tr data-rank="11" data-name="Anthony" data-gw="74" data-total="105" data-won="0.00"><td class="pos">11<span class="mv mv-up">▲1</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;Haaland&lt;/b&gt; for 26 pts&lt;br&gt;Vice: Henderson&lt;br&gt;Bench left: 0 pts · Hits: 0">Anthony</span><span class="team">team big cat</span></td><td class="num-cell">74</td><td class="num-cell">105</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;ANTHONY&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
+      <tr data-rank="12" data-name="Jesus" data-gw="65" data-total="103" data-won="0.00"><td class="pos">12<span class="mv mv-down">▼2</span></td><td class="mgr"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;GW2 ARMBAND&lt;/div&gt;Captain: &lt;b&gt;Thiago&lt;/b&gt; for 4 pts&lt;br&gt;Vice: Raya&lt;br&gt;Bench left: 2 pts · Hits: 0">Jesus</span><span class="team">Jesus's Team</span></td><td class="num-cell">65</td><td class="num-cell">103</td><td class="won"><span class="has-tip" data-tip="&lt;div class=tt-h&gt;JESUS&lt;/div&gt;Nothing banked yet. The weekly prize is still out there!">$0</span></td></tr>
     </tbody>
   </table>
   <p class="note">Every manager put in $38, so the purse is $456. The weekly winner banks $10 each week, $380 in all (ties split it), and the champion collects the final $76. All winnings are paid out in one settlement after the final gameweek in May.</p>
@@ -398,6 +430,10 @@
       <div class="aw-d">Lowest score of the week. 65 points, and captain Thiago chipped in just 4 of them. Chin up, it's early!</div>
     </div>
   </div>
+  <p class="roll-toggle"><a href="#" class="roll-link">Past honours</a></p>
+  <div class="roll" hidden>
+    <div class="roll-row"><span class="roll-gw">GW1</span><span class="roll-items">👑 <b>Cap</b> <span class="rl-t">Manager of the Week</span> · 🎯 <b>João Pedro (C), 22</b> <span class="rl-t">Captain Masterclass</span> · 💥 <b>John</b> <span class="rl-t">Chip Catastrophe</span> · 🥄 <b>Anthony</b> <span class="rl-t">The Wooden Spoon</span></span></div>
+  </div>
 
   <!-- CHIP LEDGER -->
   <div class="sec"><span>The Chip Ledger</span></div>
@@ -408,13 +444,13 @@
     <tbody>
       <tr><td class="cg-name">Cap</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Chris</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
-      <tr><td class="cg-name">Ryan</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used">1</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
+      <tr><td class="cg-name">Ryan</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used has-tip" data-tip="&lt;div class=tt-h&gt;BENCH BOOST · GW1 · RYAN&lt;/div&gt;Bench added &lt;b&gt;9 pts&lt;/b&gt;: Kelleher 7, Calvert-Lewin 1, Shaw 1, Ballard 0&lt;br&gt;GW score: 63">1</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Brett</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Diana</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Chad</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
-      <tr><td class="cg-name">Sarah</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used">2</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
+      <tr><td class="cg-name">Sarah</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used has-tip" data-tip="&lt;div class=tt-h&gt;TRIPLE CAPTAIN · GW2 · SARAH&lt;/div&gt;Captain João Pedro. The third multiple added &lt;b&gt;9 pts&lt;/b&gt;.&lt;br&gt;GW score: 77">2</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Tyler</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
-      <tr><td class="cg-name">John</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used">1</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
+      <tr><td class="cg-name">John</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-used has-tip" data-tip="&lt;div class=tt-h&gt;TRIPLE CAPTAIN · GW1 · JOHN&lt;/div&gt;Captain Thiago. The third multiple added &lt;b&gt;0 pts&lt;/b&gt;.&lt;br&gt;GW score: 42">1</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Katie</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Anthony</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
       <tr><td class="cg-name">Jesus</td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td class="h2col"><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td><td><span class="cg-dot">○</span></td></tr>
@@ -435,10 +471,10 @@
   <!-- RECORDS -->
   <div class="sec"><span>The Record Book</span></div>
   <div class="records">
-    <div class="rec"><div class="k">Highest GW</div><div class="v">103</div><div class="h">Chris · GW2</div></div>
-    <div class="rec"><div class="k">Lowest GW</div><div class="v">31</div><div class="h">Anthony · GW1</div></div>
-    <div class="rec"><div class="k">Biggest Margin</div><div class="v">20</div><div class="h">Cap · GW1</div></div>
-    <div class="rec"><div class="k">Weekly Wins</div><div class="v">1</div><div class="h">Cap and Chris</div></div>
+    <div class="rec has-tip" data-tip="&lt;div class=tt-h&gt;HIGHEST GW · PODIUM&lt;/div&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;🥇&lt;/td&gt;&lt;td&gt;&lt;b&gt;Chris&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;103&lt;/td&gt;&lt;td class=g&gt;GW2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;🥈&lt;/td&gt;&lt;td&gt;&lt;b&gt;Ryan&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;97&lt;/td&gt;&lt;td class=g&gt;GW2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;🥉&lt;/td&gt;&lt;td&gt;&lt;b&gt;Brett&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;94&lt;/td&gt;&lt;td class=g&gt;GW2&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"><div class="k">Highest GW</div><div class="v">103</div><div class="h">Chris · GW2</div></div>
+    <div class="rec has-tip" data-tip="&lt;div class=tt-h&gt;LOWEST GW · PODIUM&lt;/div&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;🥇&lt;/td&gt;&lt;td&gt;&lt;b&gt;Anthony&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;31&lt;/td&gt;&lt;td class=g&gt;GW1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;🥈&lt;/td&gt;&lt;td&gt;&lt;b&gt;Jesus&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;38&lt;/td&gt;&lt;td class=g&gt;GW1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;🥈&lt;/td&gt;&lt;td&gt;&lt;b&gt;Katie&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;38&lt;/td&gt;&lt;td class=g&gt;GW1&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"><div class="k">Lowest GW</div><div class="v">31</div><div class="h">Anthony · GW1</div></div>
+    <div class="rec has-tip" data-tip="&lt;div class=tt-h&gt;BIGGEST MARGIN · PODIUM&lt;/div&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;🥇&lt;/td&gt;&lt;td&gt;&lt;b&gt;Cap&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;20&lt;/td&gt;&lt;td class=g&gt;GW1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;🥈&lt;/td&gt;&lt;td&gt;&lt;b&gt;Chris&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;6&lt;/td&gt;&lt;td class=g&gt;GW2&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"><div class="k">Biggest Margin</div><div class="v">20</div><div class="h">Cap · GW1</div></div>
+    <div class="rec has-tip" data-tip="&lt;div class=tt-h&gt;WEEKLY WINS · PODIUM&lt;/div&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;🥇&lt;/td&gt;&lt;td&gt;&lt;b&gt;Cap&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;1&lt;/td&gt;&lt;td class=g&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;🥇&lt;/td&gt;&lt;td&gt;&lt;b&gt;Chris&lt;/b&gt;&lt;/td&gt;&lt;td class=r&gt;1&lt;/td&gt;&lt;td class=g&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"><div class="k">Weekly Wins</div><div class="v">1</div><div class="h">Cap and Chris</div></div>
   </div>
   <p class="note">Records stand until broken. New categories open as the season ages: streaks, comebacks, most money won.</p>
 
@@ -518,6 +554,96 @@
     setActive(pinned);
     if (curEv) showEv(curEv, e.clientX);
   });
+})();
+</script>
+<script>
+(function () {
+  /* shared tooltip for anything carrying data-tip */
+  var tip = document.createElement("div");
+  tip.className = "tip"; tip.hidden = true; document.body.appendChild(tip);
+  var current = null;
+  function place(x, y) {
+    var w = tip.offsetWidth, h = tip.offsetHeight, vw = window.innerWidth, vh = window.innerHeight;
+    var left = x + 14, top = y + 14;
+    if (left + w > vw - 8) left = x - w - 14;
+    if (left < 8) left = 8;
+    if (top + h > vh - 8) top = y - h - 14;
+    if (top < 8) top = 8;
+    tip.style.left = left + "px"; tip.style.top = top + "px";
+  }
+  function show(el, x, y) { current = el; tip.innerHTML = el.getAttribute("data-tip"); tip.hidden = false; place(x, y); }
+  function hideTip() { current = null; tip.hidden = true; }
+  document.addEventListener("pointerover", function (e) {
+    var el = e.target.closest && e.target.closest(".has-tip");
+    if (el && el.getAttribute("data-tip")) show(el, e.clientX, e.clientY);
+  });
+  document.addEventListener("pointermove", function (e) {
+    if (!current) return;
+    var el = e.target.closest && e.target.closest(".has-tip");
+    if (el !== current) { hideTip(); if (el && el.getAttribute("data-tip")) show(el, e.clientX, e.clientY); return; }
+    place(e.clientX, e.clientY);
+  });
+  document.addEventListener("pointerout", function (e) {
+    var el = e.target.closest && e.target.closest(".has-tip");
+    if (el && el === current && !(e.relatedTarget && el.contains(e.relatedTarget))) hideTip();
+  });
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest && e.target.closest(".has-tip");
+    if (!el) { hideTip(); return; }
+    if (current === el && e.pointerType === "touch") { hideTip(); return; }
+    show(el, e.clientX, e.clientY);
+  });
+  window.addEventListener("scroll", hideTip, { passive: true });
+
+  /* sortable money table */
+  var table = document.querySelector("table.money");
+  if (table) {
+    var tbody = table.querySelector("tbody");
+    var rows = Array.prototype.slice.call(tbody.querySelectorAll("tr"));
+    var numeric = { rank: 1, gw: 1, total: 1, won: 1 };
+    var defaultDir = { rank: "asc", name: "asc", gw: "desc", total: "desc", won: "desc" };
+    var state = { key: "rank", dir: "asc" };
+    function paint() {
+      table.querySelectorAll("th.sortable").forEach(function (th) {
+        th.classList.remove("sorted-asc", "sorted-desc");
+        if (th.dataset.key === state.key) th.classList.add(state.dir === "asc" ? "sorted-asc" : "sorted-desc");
+      });
+    }
+    function sortBy(key, dir) {
+      state = { key: key, dir: dir };
+      var sorted = rows.slice().sort(function (a, b) {
+        var va = a.dataset[key], vb = b.dataset[key], c;
+        if (numeric[key]) c = parseFloat(va) - parseFloat(vb); else c = va.localeCompare(vb);
+        if (c === 0) c = parseInt(a.dataset.rank, 10) - parseInt(b.dataset.rank, 10);
+        return dir === "asc" ? c : -c;
+      });
+      sorted.forEach(function (r) { tbody.appendChild(r); });
+      paint();
+    }
+    table.querySelectorAll("th.sortable").forEach(function (th) {
+      th.title = "Click to sort";
+      th.addEventListener("click", function () {
+        var key = th.dataset.key;
+        var dir = (state.key === key) ? (state.dir === "asc" ? "desc" : "asc") : defaultDir[key];
+        sortBy(key, dir);
+      });
+    });
+    paint();
+  }
+
+  /* honours roll */
+  var link = document.querySelector(".roll-link"), roll = document.querySelector(".roll");
+  if (link && roll) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      roll.hidden = !roll.hidden;
+      link.textContent = roll.hidden ? "Past honours" : "Hide past honours";
+    });
+    document.querySelectorAll(".honours .card").forEach(function (c) {
+      c.style.cursor = "pointer"; c.title = "Click for past honours";
+      c.addEventListener("click", function () { link.click(); });
+    });
+  }
 })();
 </script>
 </body>
